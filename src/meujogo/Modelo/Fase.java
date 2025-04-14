@@ -49,12 +49,12 @@ public class Fase extends JPanel implements ActionListener {
 	}
 	
 	public void inicializaInimigos() {
-		int coordenadas [] = new int [40];
+		int coordenadas [] = new int [60];
 		enemy1 = new ArrayList<Enemy1>();
 		
 		for(int i = 0; i < coordenadas.length; i++) {
 			int x = (int)(Math.random() * 8000 + 1920);
-			int y = (int)(Math.random() * 800 + 45);
+			int y = (int)(Math.random() * 800 + 100);
 			enemy1.add(new Enemy1(x, y));
 		}
 			
@@ -103,8 +103,6 @@ public class Fase extends JPanel implements ActionListener {
 			emJogo = true;
 		}
 	
-	
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		player.update();

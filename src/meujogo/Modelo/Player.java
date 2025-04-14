@@ -16,20 +16,22 @@ public class Player {
 	private int largura, altura;
 	private List <Tiro> tiros;
 	private boolean isVisvel = true;
-	
 	private final int LARGURA_TELA  = 1920;
 	private final int ALTURA_TELA = 1200;
+	
+	//VARIAVEIS DO PARA COOL DOWN
+	private int quantidadeDeTiros = 0;
+	private boolean podeAtirar = true;
+	private final int MAX_TIROS = 5;
+	long tempoCoolDown = 0;
+	
 	
 	public Player () {
 		this.x = 100;
 		this.y = 100;
-		
 		tiros = new ArrayList<Tiro>();
-		
 		load();
-		
-		
-		
+	
 	}
 	public void load() {
 		ImageIcon nave = new ImageIcon("res\\chatgptnave-removebg-preview.png");
@@ -68,9 +70,40 @@ public class Player {
 		int codigo = tecla.getKeyCode();
 		
 		if(codigo == KeyEvent.VK_C) {
+			//cONTA OS MILISEGUNDOS E ADICIONA A VARIAVEL AGORA
+			long agora = System.currentTimeMillis();
+			
+			/*
+			 * verifica se ja deu os 3 tiros, se não ele
+			 * continua o programa, se sim ele continua o timer até dar 2000 milisegundos
+			 */
+			
+			if(!podeAtirar) {
+				
+				if(agora >= tempoCoolDown + 2000) {
+					quantidadeDeTiros = 0;
+					podeAtirar = true;
+					
+				}
+			}
+			//executa o tiro
+			if(podeAtirar) {
+				
 			tiroSimples();
+			quantidadeDeTiros++;
+			
+			
+		    //começa o coolDown
+			if(quantidadeDeTiros >= MAX_TIROS) {
+				podeAtirar = false;
+				tempoCoolDown = agora;
+			}
+			
+			
+			}
+			
 		}
-		
+			
 		if(codigo == KeyEvent.VK_S) {
 			dy = 5;
 		}
@@ -103,8 +136,6 @@ public class Player {
 		}
 	
 }
-	
-	
 	
 	public int getX() {
 		return x;

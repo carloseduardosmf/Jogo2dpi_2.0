@@ -11,6 +11,7 @@ public class Tiro {
 	private int largura, altura;
 	private boolean isVisivel;
 	
+	
 	private static final int LARGURA = 1620;
 	private static int VELOCIDADE = 4;
 	
@@ -33,12 +34,9 @@ public class Tiro {
 		if(this.x > LARGURA) {
 			isVisivel = false;
 		}
-		
-		
-		
-			
-		
 	}
+	
+
 		
             public Rectangle getBounds() {
 			
