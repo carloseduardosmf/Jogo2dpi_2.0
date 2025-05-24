@@ -22,7 +22,7 @@ public class Player {
 	//VARIAVEIS DO PARA COOL DOWN
 	private int quantidadeDeTiros = 0;
 	private boolean podeAtirar = true;
-	private final int MAX_TIROS = 5;
+	private final int MAX_TIROS = 20;
 	long tempoCoolDown = 0;
 	
 	
@@ -70,7 +70,7 @@ public class Player {
 		int codigo = tecla.getKeyCode();
 		
 		if(codigo == KeyEvent.VK_C) {
-			//cONTA OS MILISEGUNDOS E ADICIONA A VARIAVEL AGORA
+			//CONTA OS MILISEGUNDOS E ADICIONA A VARIAVEL AGORA
 			long agora = System.currentTimeMillis();
 			
 			/*
